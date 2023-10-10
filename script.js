@@ -1,27 +1,75 @@
 let num1 = 0;
 let num2 = 0;
-let operator
+const operator = "";
+let displayValue = "";
 
 function add(x,y){
     return x + y
 }
 
-console.log(add(4,4));
-
 function subtract(x,y){
     return x - y
 }
-
-console.log(subtract(4,1));
 
 function divide(x,y){
     return x / y
 }
 
-console.log(divide(4,2));
-
 function multiply(x,y){
     return x * y
 }
 
-console.log(multiply(5,2));
+
+function operate(num1,operator,num2){
+    if(operator == "+"){
+        return add(num1,num2);
+    }
+    else if (operator == "-"){
+        return subtract(num1,num2);
+    }
+    else if (operator == "*"){
+        return multiply(num1,num2);
+    }
+    else if (operator == "/"){
+        return divide(num1,num2);
+    }
+    else{
+        return "Invalid operator";
+    }
+
+}
+
+const result = operate(num1, operator, num2);
+console.log(`${num1} ${operator} ${num2} = ${result}`);
+
+function updateDisplay(){
+    document.getElementById("display").value = displayValue;
+}
+
+function appendSum(number){
+    displayValue += number;
+    updateDisplay();
+}
+
+function setOperator(operator){
+    displayValue += operator;
+    updateDisplay();
+}
+
+//calculate the value of the user has typed in
+function calculate(){
+    let sum = document.getElementById("display").value;
+    try {
+        displayValue = Function("return " + sum)();
+        console.log(result);
+        updateDisplay();
+    } catch (error) {
+        displayValue = "Error";
+        updateDisplay();
+    }
+}
+
+function clearDisplay(){
+    displayValue = "";
+    updateDisplay();
+}
