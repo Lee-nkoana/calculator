@@ -1,75 +1,48 @@
-let num1 = 0;
-let num2 = 0;
-const operator = "";
-let displayValue = "";
-
-function add(x,y){
-    return x + y
-}
-
-function subtract(x,y){
-    return x - y
-}
-
-function divide(x,y){
-    return x / y
-}
-
-function multiply(x,y){
-    return x * y
-}
+const btnNumber = document.querySelectorAll('[data-number]');
+const btnOperator = document.querySelectorAll('[data-operator]');
+const btnEquals = document.querySelector('[data-equals]');
+const btnClear = document.querySelector('[data-clear]');
+const txtPreviousOperand = document.querySelector('[data-previous_operand]');
+const txtCurrentOperand = document.querySelector('[data-current_operand]');
 
 
-function operate(num1,operator,num2){
-    if(operator == "+"){
-        return add(num1,num2);
-    }
-    else if (operator == "-"){
-        return subtract(num1,num2);
-    }
-    else if (operator == "*"){
-        return multiply(num1,num2);
-    }
-    else if (operator == "/"){
-        return divide(num1,num2);
-    }
-    else{
-        return "Invalid operator";
+
+class Calculator{
+    constructor(txtPreviousOperand, txtCurrentOperand) {
+        this.txtPreviousOperand = txtPreviousOperand;
+        this.txtCurrentOperand = txtCurrentOperand;
+        this.clear();
     }
 
-}
+    appendSum(number){
+        this.currentOperand = number;
+    }
 
-const result = operate(num1, operator, num2);
-console.log(`${num1} ${operator} ${num2} = ${result}`);
+    setOperator(operator){
 
-function updateDisplay(){
-    document.getElementById("display").value = displayValue;
-}
+    }
 
-function appendSum(number){
-    displayValue += number;
-    updateDisplay();
-}
+    calculate(){
 
-function setOperator(operator){
-    displayValue += operator;
-    updateDisplay();
-}
+    }
 
-//calculate the value of the user has typed in
-function calculate(){
-    let sum = document.getElementById("display").value;
-    try {
-        displayValue = Function("return " + sum)();
-        console.log(result);
-        updateDisplay();
-    } catch (error) {
-        displayValue = "Error";
-        updateDisplay();
+    updateDisplay(){
+        this.txtCurrentOperand.innerText = this.currentOperand;
+    }
+
+    clear(){
+        this.currentOperand = '';
+        this.previousOperand = '';
+        this.operator = undefined;
     }
 }
 
-function clearDisplay(){
-    displayValue = "";
-    updateDisplay();
-}
+const calculator = new Calculator(txtCurrentOperand, txtPreviousOperand)
+
+btnNumber.forEach(button => {
+    button.addEventListener('click', () => {
+        calculator.appendSum(button.innerText);
+        calculator.updateDisplay;
+        console.log("clicked");
+    })
+})

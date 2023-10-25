@@ -10,31 +10,33 @@
         <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
         <link href="https://fonts.googleapis.com/css2?family=Orbitron&display=swap" rel="stylesheet">
         <script src="https://kit.fontawesome.com/d10563301d.js" crossorigin="anonymous"></script>
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjs/9.6.0/math.js"></script>
         <script src="script.js"></script>
         <title>Calculator</title>
     </head>
     <body>
         <div id="calc-body"> 
-            <input type="text" id="display" readonly>
+            <div id="display">
+                <div class="previousOperand" data-previous_operand></div>
+                <div class="currentOperand" data-current_operand></div>
+            </div>
             <div id="button-box">
                 <div id="grid-box">
-                    <button onclick="appendSum(7)">7</button>
-                    <button onclick="appendSum(8)">8</button>
-                    <button onclick="appendSum(9)">9</button>
-                    <button onclick="setOperator('+')" class="operator">+</button>
-                    <button onclick="appendSum(4)">4</button>
-                    <button onclick="appendSum(5)">5</button>
-                    <button onclick="appendSum(6)">6</button>
-                    <button onclick="setOperator('-')" class="operator">-</button>
-                    <button onclick="appendSum(1)">1</button>
-                    <button onclick="appendSum(2)">2</button>
-                    <button onclick="appendSum(3)">3</button>
-                    <button onclick="setOperator('/')" class="operator">/</button>
-                    <button onclick="appendSum(0)">0</button>
-                    <button onclick="clearDisplay()" id="btn_clr">clr</button>
-                    <button onclick="calculate()" id="btn_equals">=</button>
-                    <button onclick="setOperator('*')" class="operator">*</button>
+                    <button data-number>7</button>
+                    <button data-number>8</button>
+                    <button data-number>9</button>
+                    <button class="operator" data-operator>+</button>
+                    <button data-number>4</button>
+                    <button data-number>5</button>
+                    <button data-number>6</button>
+                    <button class="operator" data-operator>-</button>
+                    <button data-number>1</button>
+                    <button data-number>2</button>
+                    <button data-number>3</button>
+                    <button class="operator" data-operator>÷</button>
+                    <button data-number>0</button>
+                    <button id="btn_clr" data-clear>clr</button>
+                    <button id="btn_equals" data-equals>=</button>
+                    <button class="operator" data-operator>&times;</button>
                 </div>
             </div>
         </div>
